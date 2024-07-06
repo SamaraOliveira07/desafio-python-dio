@@ -37,7 +37,20 @@ while True:
         print('Saque')
         sacar = int(input('Qual valor deseja retirar?: '))
         if sacar <= saldo:
-            quantidade = f"Você realizou {numero_saque} saques e possui {limite_saque} restantes. \nDeseja prosseguir?[S/N]: "
+            quantidade = f"Você realizou {numero_saque} saques e possui {limite_saque} restantes. \nDeseja prosseguir?[S/N]: ".strip().upper()
+            if numero_saque <= 3 and limite_saque > 0:
+                if quantidade == 'S':
+                    numero_saque += 1
+                    limite_saque -= 1
+                    sacar = int(input('Qual valor deseja retirar? (Máx. R$500,00): '))
+                    if sacar <= 500:
+                        print(f"R${sacar} retirados com sucesso. Processando notas...")
+                        print('Sessão encerrada. Obrigado por utilizar nossos sistemas!')
+                    elif sacar > 500:
+                        print('Você não pode retirar um valor maior de R$500,00. \nPor favor, tente novamente.')
+                elif quantidade == 'N':
+                    print('Voltando ao menu principal..')
+
     #parte de extrato
     elif opcao == '3':
         print('Extrato')
