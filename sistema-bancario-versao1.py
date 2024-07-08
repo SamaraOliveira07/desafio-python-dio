@@ -70,6 +70,7 @@ Você não possui mais saques disponíveis. \nPor favor, verifique o extrato da 
     #parte de extrato
     elif opcao == '3':
         print('\033[1;33mExtrato (Aperte ENTER para voltar ao menu.)\033[m')
+        print('Não foram realizadas transações.'if not extrato else extrato)
         print(f'\033[1mSaldo disponível: R${saldo}')
         print(input(extrato))
         
